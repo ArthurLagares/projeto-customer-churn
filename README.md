@@ -91,31 +91,6 @@ Os resultados indicam que o modelo apresenta **desempenho satisfatório e aplic�
 
 ---
 
-## 🚀 Como Executar o Projeto
-
-### 1️⃣ Clonar o repositório
-```bash
-git clone <url-do-repositorio>
-cd <nome-do-repositorio>
-```
-
-### 2️⃣ Criar ambiente virtual (opcional)
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\\Scripts\\activate  # Windows
-```
-
-### 3️⃣ Instalar dependências
-```bash
-pip install -r requirements.txt
-```
-
-### 4️⃣ Executar o notebook
-Abra o arquivo `notebook.ipynb` em um ambiente como **Jupyter Notebook**, **JupyterLab** ou **VS Code**.
-
----
-
 ## 📝 Conclusão
 Este projeto demonstra uma aplicação prática de **Machine Learning para previsão de churn**, um problema crítico em empresas orientadas a serviços. A abordagem adotada, aliada aos resultados obtidos, evidencia o potencial do modelo como **ferramenta de apoio à tomada de decisão estratégica**.
 
