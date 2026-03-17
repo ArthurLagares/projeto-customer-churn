@@ -17,9 +17,10 @@ Desenvolver um **modelo preditivo de classificação** capaz de **identificar a 
 - **Origem dos dados**: Kaggle
 - **Setor**: Telecomunicações
 
-A base de dados representa uma empresa de telecomunicações que comercializa planos de internet. O conjunto contém variáveis demográficas, contratuais e comportamentais dos clientes, incluindo:
-- Tempo de permanência como cliente
+A base de dados representa uma empresa de telecomunicações que comercializa planos de internet. O conjunto contém variáveis contratuais dos clientes, incluindo:
+- Tempo de permanência (em meses) como cliente
 - Valor da mensalidade
+- Valor total gasto
 - Tipo de plano contratado
 - Serviços adicionais
 - Indicador de churn (variável alvo)
