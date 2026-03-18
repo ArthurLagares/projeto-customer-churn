@@ -1,15 +1,22 @@
 import pandas as pd
 import numpy as np
 from sklearn.metrics import  accuracy_score, confusion_matrix, classification_report
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
 
-def gerar_modelos(X_treino, y_treino, X_teste, y_teste): 
+# MODELOS TESTADOS
+from sklearn.linear_model import RidgeClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+
+
+def gerar_avaliar_modelos(X_treino, y_treino, X_teste, y_teste): 
     modelos = {
-        'Árvore simples': DecisionTreeClassifier(),
-        'Floresta Aleatória' : RandomForestClassifier(),
-        'Naive Bayes' : GaussianNB()
+        'Ridge Classifier': RidgeClassifier(),
+        'Decision Tree': DecisionTreeClassifier(),
+        'Naive Bayes' : GaussianNB(),
+        'Random Forest' : RandomForestClassifier(),
+        'XGBClassifier': XGBClassifier()
     }
 
 
@@ -21,6 +28,16 @@ def gerar_modelos(X_treino, y_treino, X_teste, y_teste):
         y_prev = modelo.predict(X_teste)
 
         print('Acurácia (teste): ', accuracy_score(y_teste, y_prev),'\n\n')
+
+
+        # Avaliação de métricas
+
+        cnf_matrix = confusion_matrix(y_teste, y_prev)
+        print(cnf_matrix, '\n\n')
+        # cnf_table = pd.DataFrame(data=cnf_matrix, index=["Churn=Não", "Churn=Sim"], columns=["Churn(prev)=Não", "Prev. Churn(prev)=Sim"])
+        # print(cnf_table, '\n\n')
+
+        print(classification_report(y_teste, y_prev), '\n\n')
 
 
 
@@ -47,17 +64,3 @@ def undersampling (X_treino, y_treino):
     X = base_treino.drop('churn', axis = 1)
     y = base_treino['churn']
     return X, y
-
-
-
-def avaliar_modelo (modelo,X_treino, y_treino, X_teste , y_teste ):
-
-    modelo.fit(X_treino, y_treino)
-    y_prev = modelo.predict(X_teste)
-
-    cnf_matrix = confusion_matrix(y_teste, y_prev)
-    
-    cnf_table = pd.DataFrame(data=cnf_matrix, index=["Churn=Não", "Churn=Sim"], columns=["Churn(prev)=Não", "Prev. Churn(prev)=Sim"])
-    print(cnf_table, '\n\n')
-
-    print(classification_report(y_teste, y_prev), '\n\n')
